@@ -1,5 +1,7 @@
 import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
+import Card from "./card"
+import { Grid, Typography } from "@mui/material"
 
 const UserProfile = () => {
   const data = useStaticQuery(graphql`
@@ -24,33 +26,29 @@ const UserProfile = () => {
     }
   `)
   return (
-    <div>
-      <h1>All user profiles</h1>
-      <table>
-          <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>User Name</th>
-              <th>DOB</th>
-              <th>Created At</th>
-              <th>Updated At</th>
-          </tr>
-      {data.allIndexJson.edges.map((user, key)=>{
-          console.log("inside:", user.node)
-        return(
-            <tr key={key}>
-                <td>{user.node.profile.name}</td>
-                <td>{user.node.email}</td>
-                <td>{user.node.username}</td>
-                <td>{user.node.profile.dob}</td>
-                <td>{new Date(user.node.createdAt).toDateString()}</td>
-                <td>{new Date(user.node.updatedAt).toDateString()}</td>
-
-            </tr>
-        ) 
+    <Grid container spacing={2}>
+      <Grid item xs={12}>
+        <Typography variant="h3" component="h2" mt={2} align="center">
+           Profile of All Users
+        </Typography>
+      </Grid>
+      {data.allIndexJson.edges.map((user, key) => {
+        return (
+          <Grid item xs={4}>
+            <Card
+              mt={2}
+              name={user.node.profile.name}
+              email={user.node.email}
+              userName={user.node.username}
+              dob={user.node.profile.dob}
+              about={user.node.profile.about}
+              createdAt={new Date(user.node.createdAt).toDateString()}
+              updatedAt={new Date(user.node.updatedAt).toDateString()}
+            />
+          </Grid>
+        )
       })}
-       </table>
-    </div>
+    </Grid>
   )
 }
 

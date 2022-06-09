@@ -4,11 +4,14 @@ import { StaticImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 import Header from "../components/header"
 import User from "../components/userProfile"
+import {Container} from "@mui/material"
 
 
 const IndexPage = () => (
     <Layout>
-      <User />
+      <Container maxWidth="lg">
+        <User />
+      </Container>
     </Layout>
 )
 

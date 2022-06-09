@@ -4,6 +4,8 @@ import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 import Footer from "./footer"
+import MenuBar from "./MenuBar"
+
 import "./layout.css"
 
 const Layout = ({ children }) => {
@@ -20,6 +22,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <Header siteTitle={`Welcome to Our Website`} />
+      <MenuBar />
         <main>{children}</main>
       <Footer />
     </>

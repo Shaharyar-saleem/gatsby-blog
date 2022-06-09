@@ -6,6 +6,10 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@material-ui/core": "^4.12.4",
+    "@material-ui/icons": "^4.11.3",
+    "@mui/material": "^5.8.3",
     "gatsby": "^4.15.2",
     "gatsby-plugin-gatsby-cloud": "^4.15.0",
     "gatsby-plugin-image": "^2.15.1",

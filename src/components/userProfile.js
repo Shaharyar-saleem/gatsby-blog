@@ -10,6 +10,7 @@ const UserProfile = () => {
             username
             email
             createdAt
+            updatedAt
             profile {
               dob
               name
@@ -22,18 +23,33 @@ const UserProfile = () => {
       }
     }
   `)
-  console.log("data fetched:", data)
   return (
     <div>
       <h1>All user profiles</h1>
-      {data.allIndexJson.edges.map((user, key) => {
-        return (
-          <div key={key}>
-            {console.log("inside data:", user.node)}
-            <h4>{user.node.profile.about}</h4>
-          </div>
-        )
+      <table>
+          <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>User Name</th>
+              <th>DOB</th>
+              <th>Created At</th>
+              <th>Updated At</th>
+          </tr>
+      {data.allIndexJson.edges.map((user, key)=>{
+          console.log("inside:", user.node)
+        return(
+            <tr key={key}>
+                <td>{user.node.profile.name}</td>
+                <td>{user.node.email}</td>
+                <td>{user.node.username}</td>
+                <td>{user.node.profile.dob}</td>
+                <td>{new Date(user.node.createdAt).toDateString()}</td>
+                <td>{new Date(user.node.updatedAt).toDateString()}</td>
+
+            </tr>
+        ) 
       })}
+       </table>
     </div>
   )
 }

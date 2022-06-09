@@ -1,5 +1,6 @@
 import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
+import { Button, Box } from "@mui/material";
 
 const UserProfile = () => {
   const data = useStaticQuery(graphql`
@@ -35,6 +36,9 @@ const UserProfile = () => {
               <th>Created At</th>
               <th>Updated At</th>
           </tr>
+          <Box p={4}>
+      <Button variant="contained">Hello gatsby-theme-material-ui</Button>
+    </Box>
       {data.allIndexJson.edges.map((user, key)=>{
           console.log("inside:", user.node)
         return(
